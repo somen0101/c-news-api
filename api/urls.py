@@ -9,6 +9,7 @@ urlpatterns = [
     path('newstopics/', NewsTopicsListCreate.as_view()),
     path('newstopics/<pk>/', NewsTopicsRetrieveUpdate.as_view()),
 
-    path('bookmark/', NewsTopicsListCreate.as_view()),
+    path('bookmark/', BookmarkListCreate.as_view()),
+    path('bookmark/<username>', BookmarkListCreate.as_view()),
 
 ]

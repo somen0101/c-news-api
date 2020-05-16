@@ -33,7 +33,7 @@ class UserRetrieveUpdate(generics.RetrieveUpdateAPIView):
 
 
 class NewsTopicsListCreate(generics.ListCreateAPIView):
-    """ List and create PileColors """
+    """ List and create  """
     queryset = Topics.objects.all()
     serializer_class = NewsTopicsSerializer
     permission_classes = (permissions.AllowAny, )
@@ -50,23 +50,23 @@ class NewsTopicsListCreate(generics.ListCreateAPIView):
 
 
 class NewsTopicsRetrieveUpdate(generics.RetrieveUpdateAPIView):
-    """ Retrieve and update PileColor information """
+    """ Retrieve and update """
     queryset = Topics.objects.all()
     serializer_class = NewsTopicsSerializer
     permission_classes = (permissions.IsAuthenticated, )
 
 
 class BookmarkListCreate(generics.ListCreateAPIView):
-    """ List and create PileColors """
+    """ List and create """
     queryset = Bookmark.objects.all()
-    serializer_class = NewsTopicsSerializer
+    serializer_class = BookmarkSerializer
     permission_classes = (permissions.AllowAny, )
 
     def get_queryset(self):
         queryset = Bookmark.objects.all()
-        domain = self.request.query_params.get('username', None)
-        if domain is not None:
-            queryset = queryset.filter(domain_tags=domain)
+        name = self.request.query_params.get('username', None)
+        if name is not None:
+            queryset = queryset.filter(username=name)
         return queryset
 
 # Create your views here.
