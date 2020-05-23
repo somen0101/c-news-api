@@ -92,7 +92,7 @@ class Command(BaseCommand):
                                                      language=name)
                 for i in context["articles"]:
                     try:
-                        if i["description"]or i["title"] is not None:
+                        if i["description"] or i["title"] is not None:
                             Topics.objects.create(title=translate(i["title"], name, "ja"), published_date=i["publishedAt"],
                                                   description=translate(i["description"], name, "ja"), author=i["author"],
                                                   image_url=i["urlToImage"], topic_url=i["url"], domain_tags=name,sentimental=sentimentals(i["title"]))
@@ -141,10 +141,10 @@ def translate(sentence, source_country, country_name):
         return data["text"]
 
 def sentimentals(text):
-    key = "AIzaSyAKBOrRXBuMCNoujlH--xKWJR4XKe6RYrA"
 
     # APIのURL
-    url = 'https://language.googleapis.com/v1/documents:analyzeSentiment?key=' + key
+    url = 'https://language.googleapis.com/v1/documents:analyzeSentiment?key='
+    #+ key
 
     # 基本情報の設定 JAをENにすれば英語のテキストを解析可能
     header = {'Content-Type': 'application/json'}

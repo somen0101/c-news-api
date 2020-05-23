@@ -23,5 +23,5 @@ class BookmarkSerializer(serializers.ModelSerializer):
     """ A serializer for the PileColor model """
     class Meta:
         model = Bookmark
-        fields = ('username', 'title', 'description', 'published_date',
+        fields = ('id', 'username', 'title', 'description', 'published_date',
                   'author', 'topic_url', 'image_url', 'sentimental')

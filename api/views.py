@@ -44,7 +44,7 @@ class NewsTopicsListCreate(generics.ListCreateAPIView):
         top = self.request.query_params.get('top_news', None)
         if domain and top is not None:
             queryset = queryset.filter(domain_tags=domain,top_news=top)
-        elif top is None:
+        elif domain is not None:
             queryset = queryset.filter(domain_tags=domain)
         return queryset
 
@@ -60,7 +60,7 @@ class BookmarkListCreate(generics.ListCreateAPIView):
     """ List and create """
     queryset = Bookmark.objects.all()
     serializer_class = BookmarkSerializer
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.AllowAny,)
 
     def get_queryset(self):
         queryset = Bookmark.objects.all()
@@ -68,5 +68,13 @@ class BookmarkListCreate(generics.ListCreateAPIView):
         if name is not None:
             queryset = queryset.filter(username=name)
         return queryset
+
+
+class BookmarkDestory(generics.DestroyAPIView):
+
+    queryset = Bookmark.objects.all()
+    serializer_class = BookmarkSerializer
+    permission_classes = (permissions.AllowAny,)
+
 
 # Create your views here.

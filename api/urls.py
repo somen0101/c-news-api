@@ -11,5 +11,6 @@ urlpatterns = [
 
     path('bookmark/', BookmarkListCreate.as_view()),
     path('bookmark/<username>', BookmarkListCreate.as_view()),
+    path('bookmark/<username>/<pk>', BookmarkDestory.as_view()),
 
 ]
